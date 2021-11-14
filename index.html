@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="svript.css" defer></script>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="style.css" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Library</title>
+  </head>
+  <body>
+    <h1>Welcome to the library</h1>
+    <button class="add-book">Add Book</button>
+
+    <form class="inputBook">
+      <label for="title">Book Title</label>
+      <input
+        type="text"
+        name="title"
+        id="title"
+        autocomplete="off"
+        maxlength="100"
+      />
+      <label for="author">Book Author</label>
+      <input
+        id="author"
+        type="text"
+        name="author"
+        autocomplete="off"
+        maxlength="100"
+      />
+    </form>
+    <label for="pages">Number of pages</label>
+    <input type="number" name="pages" id="pages" />
+    <label for="isRead">is Read or Not</label>
+    <input type="checkbox" name="isRead" id="isRead" />
+    <button id="submitBtn">Submit</button>
+    <button id="cancelBtn">Cancel</button>
+
+    <footer class="footer">
+      <span>Copyright © The Odin Project 2021</span>
+      <a href="https://github.com/kyu931" class="rotate-link">
+        <img
+          src="images/git-github-hub-icon-25.png"
+          alt="github"
+          width="30"
+          height="30"
+          class="rotate-icon"
+      /></a>
+    </footer>
+  </body>
+</html>
