@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <script src="svript.css" defer></script>
+    <script src="script.js" defer></script>
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="style.css" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -9,33 +9,42 @@
     <title>Library</title>
   </head>
   <body>
-    <h1>Welcome to the library</h1>
-    <button class="add-book">Add Book</button>
+    <header class="header">
+      <h1>Welcome to the library</h1>
+      <button class="addBook">Add Book</button>
+    </header>
 
-    <form class="inputBook">
-      <label for="title">Book Title</label>
-      <input
-        type="text"
-        name="title"
-        id="title"
-        autocomplete="off"
-        maxlength="100"
-      />
-      <label for="author">Book Author</label>
-      <input
-        id="author"
-        type="text"
-        name="author"
-        autocomplete="off"
-        maxlength="100"
-      />
-    </form>
-    <label for="pages">Number of pages</label>
-    <input type="number" name="pages" id="pages" />
-    <label for="isRead">is Read or Not</label>
-    <input type="checkbox" name="isRead" id="isRead" />
-    <button id="submitBtn">Submit</button>
-    <button id="cancelBtn">Cancel</button>
+    <div class="inputBookContainer">
+      <form class="inputBook">
+        <label for="title">Book Title</label>
+        <input
+          type="text"
+          name="title"
+          id="title"
+          autocomplete="off"
+          maxlength="100"
+        />
+        <label for="author">Book Author</label>
+        <input
+          id="author"
+          type="text"
+          name="author"
+          autocomplete="off"
+          maxlength="100"
+        />
+        <label for="pages">Number of pages</label>
+        <input type="number" name="pages" id="pages" />
+        <label for="isRead"
+          >is Read or Not
+          <input type="checkbox" name="isRead" id="isRead" />
+        </label>
+        <div class="inputBookButton">
+          <button id="submitBtn">Submit</button>
+          <button id="cancelBtn">Cancel</button>
+        </div>
+      </form>
+    </div>
+    <div class="book-display"></div>
 
     <footer class="footer">
       <span>Copyright © The Odin Project 2021</span>
