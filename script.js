@@ -2,6 +2,7 @@ const addBook = document.querySelector(".addBook");
 const submit = document.getElementById("submitBtn");
 const cancel = document.getElementById("cancelBtn");
 const inputBook = document.querySelector(".inputBook");
+const bookDisplay = document.querySelector(".book-display");
 
 class Book {
   constructor(title, author, pages, isRead) {
@@ -34,19 +35,55 @@ submit.addEventListener("click", (e) => {
   ) {
     alert("there is nothing to see");
   } else {
-    let book = new Book(
-      document.getElementById("title").value,
-      document.getElementById("author").value,
-      document.getElementById("pages").value,
-      document.getElementById("isRead").checked
-    );
-    library.push(book);
-    localStorage.setItem("books", JSON.stringify(library));
-
-    displayLibrary(library);
+    addBookToLibrary();
   }
-
-  cancel.addEventListener("click", (e) => {});
-
-  function displayLibrary(library) {}
 });
+cancel.addEventListener("click", (e) => {});
+
+function addBookToLibrary() {
+  let book = new Book(
+    document.getElementById("title").value,
+    document.getElementById("author").value,
+    document.getElementById("pages").value,
+    document.getElementById("isRead").checked
+  );
+
+  library.push(book);
+  localStorage.setItem("books", JSON.stringify(library));
+  displayLibrary(library);
+}
+function displayLibrary(library) {
+  bookDisplay.innerHTML = "";
+  for (i = 0; i < library.length; i++) {
+    number = document.createElement("div");
+    classname = "book-number-" + i;
+    number.classList.add(classname);
+    bookDisplay.appendChild(number);
+
+    // setting up the title
+    title = document.createElement("p");
+    classname = "title-book-number-" + i;
+    title.classList.add(classname);
+    title.textContent = library[i].title;
+    number.appendChild(title);
+
+    // setting up the author
+    author = document.createElement("p");
+    classname = "author-book-number-" + i;
+    author.classList.add(classname);
+    author.textContent = library[i].author;
+    number.appendChild(author);
+
+    //setting up the Number of pages
+    pages = document.createElement("p");
+    classname = "pages-book-number-" + i;
+    pages.classList.add(classname);
+    pages.textContent = library[i].pages;
+    number.appendChild(pages);
+
+    isRead = document.createElement("p");
+    classname = "isRead-book-number-" + i;
+    pages.classList.add(classname);
+    pages.textContent = library[i].isRead ? "Read" : "Not read";
+  }
+}
