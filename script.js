@@ -90,9 +90,15 @@ function displayLibrary(library) {
     number.appendChild(isRead);
 
     readToggle = document.createElement("button");
-    classname = "readToggle-book-number-" + i;
+    classname = "readToggle readToggle-book-number-" + i;
     readToggle.classList.add(classname);
     readToggle.textContent = "Read or not ?";
     number.appendChild(readToggle);
+
+    removeBook = document.createElement("button");
+    classname = "removeBook removeBook-book-number-" + i;
+    removeBook.classList.add(classname);
+    removeBook.textContent = "Remove";
+    number.appendChild(removeBook);
   }
 }
