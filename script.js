@@ -15,7 +15,7 @@ class Book {
 let library;
 
 if (localStorage.getItem("books")) {
-  library = JSON.Parse(localStorage.getItem("books"));
+  library = JSON.parse(localStorage.getItem("books"));
   displayLibrary(library);
 } else {
   library = [];
@@ -23,6 +23,7 @@ if (localStorage.getItem("books")) {
 
 addBook.addEventListener("click", () => {
   inputBook.classList.toggle("inputBookActive");
+  inputBook.reset();
 });
 
 submit.addEventListener("click", (e) => {
@@ -50,6 +51,7 @@ function addBookToLibrary() {
 
   library.push(book);
   localStorage.setItem("books", JSON.stringify(library));
+  inputBook.classList.toggle("inputBookActive");
   displayLibrary(library);
 }
 function displayLibrary(library) {
@@ -83,7 +85,14 @@ function displayLibrary(library) {
 
     isRead = document.createElement("p");
     classname = "isRead-book-number-" + i;
-    pages.classList.add(classname);
-    pages.textContent = library[i].isRead ? "Read" : "Not read";
+    isRead.classList.add(classname);
+    isRead.textContent = library[i].isRead ? "Read" : "Not read";
+    number.appendChild(isRead);
+
+    readToggle = document.createElement("button");
+    classname = "readToggle-book-number-" + i;
+    readToggle.classList.add(classname);
+    readToggle.textContent = "Read or not ?";
+    number.appendChild(readToggle);
   }
 }
