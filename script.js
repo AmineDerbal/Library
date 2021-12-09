@@ -58,47 +58,64 @@ function displayLibrary(library) {
   bookDisplay.innerHTML = "";
   for (i = 0; i < library.length; i++) {
     number = document.createElement("div");
-    classname = "book-number-" + i;
-    number.classList.add(classname);
+    number.classList.add((classname = "book-number-" + i));
     bookDisplay.appendChild(number);
 
     // setting up the title
     title = document.createElement("p");
-    classname = "title-book-number-" + i;
-    title.classList.add(classname);
-    title.textContent = library[i].title;
+    title.classList.add("title-book-number-" + i);
+    title.textContent = "title : " + library[i].title;
     number.appendChild(title);
 
     // setting up the author
     author = document.createElement("p");
-    classname = "author-book-number-" + i;
-    author.classList.add(classname);
-    author.textContent = library[i].author;
+    author.classList.add("author-book-number-" + i);
+    author.textContent = "author : " + library[i].author;
     number.appendChild(author);
 
     //setting up the Number of pages
     pages = document.createElement("p");
-    classname = "pages-book-number-" + i;
-    pages.classList.add(classname);
-    pages.textContent = library[i].pages;
+    pages.classList.add("pages-book-number-" + i);
+    pages.textContent = "number of pages : " + library[i].pages;
     number.appendChild(pages);
 
     isRead = document.createElement("p");
-    classname = "isRead-book-number-" + i;
-    isRead.classList.add(classname);
-    isRead.textContent = library[i].isRead ? "Read" : "Not read";
+    isRead.classList.add("isRead-book-number-" + i);
+    isRead.textContent = library[i].isRead
+      ? "status : Read"
+      : "status : Not read";
     number.appendChild(isRead);
 
     readToggle = document.createElement("button");
-    classname = "readToggle readToggle-book-number-" + i;
-    readToggle.classList.add(classname);
+    readToggle.classList.add("btn", "btn-toggle");
+    readToggle.setAttribute("data-book-index", i);
     readToggle.textContent = "Read or not ?";
     number.appendChild(readToggle);
+    readToggle.addEventListener("click", (e) => {
+      toggle(e);
+    });
 
     removeBook = document.createElement("button");
-    classname = "removeBook removeBook-book-number-" + i;
-    removeBook.classList.add(classname);
+    removeBook.classList.add("btn", "btn-remove");
+    removeBook.setAttribute("data-book-index", i);
     removeBook.textContent = "Remove";
     number.appendChild(removeBook);
+    removeBook.addEventListener("click", (e) => {
+      remove(e);
+    });
+  }
+}
+
+function remove(e) {
+  const index = e.target.dataset.bookIndex;
+  library.splice(index, 1);
+  displayLibrary(library);
+  localStorage.setItem("books", JSON.stringify(library));
+}
+
+function toogle(e) {
+  const index = e.target.dataset.bookIndex;
+  if (library[index].isRead) {
+    library[index].isRead = false;
   }
 }
