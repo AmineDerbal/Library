@@ -4,6 +4,8 @@
     <script src="script.js" defer></script>
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="style.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Library</title>
@@ -11,39 +13,53 @@
   <body>
     <header class="header">
       <h1>Welcome to the library</h1>
-      <button class="addBook">Add Book</button>
+      <button type="button" class="btn btn-primary addBook" data-bs-toggle="modal" data-bs-target="#input">
+        Add Book
+      </button>
     </header>
-
-    <div class="inputBookContainer">
-      <form class="inputBook">
-        <label for="title">Book Title</label>
-        <input
-          type="text"
-          name="title"
-          id="title"
-          autocomplete="off"
-          maxlength="100"
-        />
-        <label for="author">Book Author</label>
-        <input
-          id="author"
-          type="text"
-          name="author"
-          autocomplete="off"
-          maxlength="100"
-        />
-        <label for="pages">Number of pages</label>
-        <input type="number" name="pages" id="pages" />
-        <label for="isRead"
-          >is Read or Not
-          <input type="checkbox" name="isRead" id="isRead" />
-        </label>
-        <div class="inputBookButton">
-          <button id="submitBtn">Submit</button>
-          <button id="cancelBtn">Cancel</button>
+     
+    <div class="modal fade" id="input" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+              <form class="inputBook">
+                  <label for="title">Book Title</label>
+                  <input
+                    type="text"
+                    name="title"
+                    id="title"
+                    autocomplete="off"
+                    maxlength="100"
+                  />
+                  <label for="author">Book Author</label>
+                  <input
+                    id="author"
+                    type="text"
+                    name="author"
+                    autocomplete="off"
+                    maxlength="100"
+                  />
+                  <label for="pages">Number of pages</label>
+                  <input type="number" name="pages" id="pages" />
+                  <label for="isRead"
+                    >is Read or Not
+                    <input type="checkbox" name="isRead" id="isRead" />
+                  </label>
+                  
+                </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" id="cancelBtn" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" id="submitBtn" data-bs-toggle="modal">Save changes</button>
+          </div>
         </div>
-      </form>
+      </div>
     </div>
+    
     <div class="book-display"></div>
 
     <footer class="footer">
@@ -57,5 +73,7 @@
           class="rotate-icon"
       /></a>
     </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
   </body>
 </html>

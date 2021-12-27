@@ -3,6 +3,7 @@ const submit = document.getElementById("submitBtn");
 const cancel = document.getElementById("cancelBtn");
 const inputBook = document.querySelector(".inputBook");
 const bookDisplay = document.querySelector(".book-display");
+const input = document.querySelector("#input");
 
 class Book {
   constructor(title, author, pages, isRead) {
@@ -22,7 +23,6 @@ if (localStorage.getItem("books")) {
 }
 
 addBook.addEventListener("click", () => {
-  inputBook.classList.toggle("inputBookActive");
   inputBook.reset();
 });
 
@@ -51,7 +51,7 @@ function addBookToLibrary() {
 
   library.push(book);
   localStorage.setItem("books", JSON.stringify(library));
-  inputBook.classList.toggle("inputBookActive");
+  
   displayLibrary(library);
 }
 function displayLibrary(library) {
@@ -79,27 +79,33 @@ function displayLibrary(library) {
     pages.textContent = "number of pages : " + library[i].pages;
     number.appendChild(pages);
 
-    isRead = document.createElement("p");
-    isRead.classList.add("isRead-book-number-" + i);
-    isRead.textContent = library[i].isRead
-      ? "status : Read"
-      : "status : Not read";
-    number.appendChild(isRead);
+   // isRead = document.createElement("p");
+    //isRead.classList.add("isRead-book-number-" + i);
+    buttonDiv = document.createElement("div");
+    buttonDiv.classList.add("btn-div");
+    number.appendChild(buttonDiv);
+
 
     readToggle = document.createElement("button");
-    readToggle.classList.add("btn", "btn-toggle");
+    readToggle.classList.add("btn", "btn-success","btn-toggle-" + i);
     readToggle.setAttribute("data-book-index", i);
-    readToggle.textContent = "Read or not ?";
-    number.appendChild(readToggle);
+      if(library[i].isRead){   
+         readToggle.textContent = "Read";
+        }else{
+          readToggle.classList.toggle("btn-danger");
+          readToggle.textContent = "Not read";
+      }
+
+    buttonDiv.appendChild(readToggle);
     readToggle.addEventListener("click", (e) => {
       toggle(e);
     });
 
     removeBook = document.createElement("button");
-    removeBook.classList.add("btn", "btn-remove");
+    removeBook.classList.add("btn", "btn-remove","btn-secondary");
     removeBook.setAttribute("data-book-index", i);
     removeBook.textContent = "Remove";
-    number.appendChild(removeBook);
+    buttonDiv.appendChild(removeBook);
     removeBook.addEventListener("click", (e) => {
       remove(e);
     });
@@ -113,9 +119,21 @@ function remove(e) {
   localStorage.setItem("books", JSON.stringify(library));
 }
 
-function toogle(e) {
+function toggle(e) {
   const index = e.target.dataset.bookIndex;
+  const book = document.querySelector(".btn-toggle-" + index);
+
   if (library[index].isRead) {
     library[index].isRead = false;
+    book.textContent = "Not read";
+    book.classList.toggle("btn-danger");
+
+    
+  } else {
+    library[index].isRead = true;
+    book.textContent = "Read";
+    book.classList.toggle("btn-danger");
+
+   
   }
 }

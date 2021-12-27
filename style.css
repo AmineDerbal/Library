@@ -1,20 +1,45 @@
+:root {
+  --footer-color: rgb(3, 30, 54);
+  --background: ;
+}
+
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
 body {
   margin: 0;
   padding: 0;
   height: auto;
+  margin-bottom: 100px;
+}
+header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 5%;
+  background-color: aqua;
 }
 h1 {
   text-align: center;
 }
-.inputBookContainer {
-  position: absolute;
-  display: flex;
-  width: 100%;
-  justify-content: center;
-  align-items: center;
-}
+
 .inputBook {
-  display: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 5px;
+ 
 }
 .book-display {
   width: 100%;
@@ -24,31 +49,27 @@ h1 {
   align-items: center;
   justify-content: left;
   margin: 0 auto;
-  padding: 5px 5px;
+  padding: 10px 10px;
   gap: 10px;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
 }
 .book-display div {
   border: 2px solid black;
-  padding: 2px;
+  padding: 5px;
 }
-.inputBookActive {
+div .btn-div{
+  border: none;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
-  padding: 20px;
-  align-items: center;
   gap: 10px;
-  width: 500px;
-  left: auto;
-  right: auto;
-  background-color: blue;
+
 }
 
+
 .footer {
-  padding: 10px 0;
+  padding: 10px;
   font-size: 20px;
-  position: fixed;
+  position: absolute;
   left: 0;
   bottom: 0;
   width: 100%;
@@ -59,7 +80,7 @@ h1 {
   justify-content: center;
 
   /* Height of the footer */
-  background-color: rgb(3, 30, 54);
+  background-color: var(--footer-color);
 }
 .footer span {
   display: inline-block;
