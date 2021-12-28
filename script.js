@@ -64,20 +64,38 @@ function displayLibrary(library) {
     // setting up the title
     title = document.createElement("p");
     title.classList.add("title-book-number-" + i);
-    title.textContent = "title : " + library[i].title;
-    number.appendChild(title);
+    text = document.createElement("div");
+    text.classList.add("book-text");
+    bold = document.createElement("strong");
+    bold.textContent="title : ";
+    title.textContent = library[i].title;
+    text.appendChild(bold);
+    text.appendChild(title);
+    number.appendChild(text);
+
 
     // setting up the author
     author = document.createElement("p");
     author.classList.add("author-book-number-" + i);
-    author.textContent = "author : " + library[i].author;
-    number.appendChild(author);
-
+    text = document.createElement("div");
+    text.classList.add("book-text");
+    bold = document.createElement("strong");
+    bold.textContent="author : ";
+    author.textContent =  library[i].author;
+    text.appendChild(bold);
+    text.appendChild(author);
+    number.appendChild(text);
     //setting up the Number of pages
     pages = document.createElement("p");
     pages.classList.add("pages-book-number-" + i);
-    pages.textContent = "number of pages : " + library[i].pages;
-    number.appendChild(pages);
+    text = document.createElement("div");
+    text.classList.add("book-text");
+    bold = document.createElement("strong");
+    bold.textContent="number of pages :";
+    pages.textContent = library[i].pages;
+    text.appendChild(bold);
+    text.appendChild(pages);
+    number.appendChild(text);
 
    // isRead = document.createElement("p");
     //isRead.classList.add("isRead-book-number-" + i);
